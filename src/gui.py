@@ -163,8 +163,8 @@ class ModernNataliaGUI:
 
         # Graceful manual system exits via keyboard text
         if user_text.lower() in ["exit system", "shutdown", "quit"]:
-            self.insert_hud_text("[NATALIA] >> Shutting down tactical assistant. Stay safe.\n")
-            self.natalia.speak("Shutting down tactical assistant. Stay safe out there.")
+            self.insert_hud_text("[NATALIA] >> Shutting down tactical assistant. Have a nice time, sir.\n")
+            self.natalia.speak("Shutting down tactical assistant. Have a nice time, sir.")
             self.root.quit()
             return
 
@@ -199,7 +199,8 @@ class ModernNataliaGUI:
                 self.root.after(0, self.insert_diag_text, f"[NLP] Tokenizing input: '{voice_text[:20]}...'\n")
 
                 if "exit system" in voice_text or "shutdown" in voice_text or "quit" in voice_text:
-                    self.natalia.speak("Shutting down tactical assistant. Stay safe out there.")
+                    self.root.after(0, self.insert_hud_text, "[NATALIA] >> Shutting down tactical assistant. Have a nice time, sir.\n")
+                    self.natalia.speak("Shutting down tactical assistant. Have a nice time, sir.")
                     self.root.after(0, self.root.quit)
                     break
 
